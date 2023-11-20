@@ -4,40 +4,25 @@ using AspNetCoreProject.CustomMiddleware;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.Use(async (context, next) =>
-{
-   Microsoft.AspNetCore.Http.Endpoint? endpoint = context.GetEndpoint();
-    if(endpoint != null)
-    {
-       await context.Response.WriteAsync($"Endpoint: {endpoint.DisplayName}\n");
-    }
-    await next(context);
-});
-
 // routing example
 app.UseRouting(); // enable routing
 
 
-app.Use(async (context, next) =>
-{
-    Microsoft.AspNetCore.Http.Endpoint? endpoint = context.GetEndpoint();
-    if (endpoint != null)
-    {
-        await context.Response.WriteAsync($"Endpoint: {endpoint.DisplayName}\n");
-    }
-    await next(context);
-});
 // creating endpoints
 app.UseEndpoints(endpoints =>
 {
-    // add your end point, Map METHODS
-    endpoints.MapGet("/map1", async (context) =>
+    endpoints.Map("files/{filename}.{extension}", async context =>
     {
-        await context.Response.WriteAsync("In map 1");
+        string? filename = Convert.ToString(context.Request.RouteValues["filename"]);
+        string? extension = Convert.ToString(context.Request.RouteValues["extension"]);
+        await context.Response.WriteAsync($"In files - {filename} - {extension}");
     });
-    endpoints.MapPost("/map2", async (context) =>
+
+    // case insensitive
+    endpoints.Map("employee/profile/{employeeName}", async context =>
     {
-        await context.Response.WriteAsync("In map 2");
+        string? employeeName = Convert.ToString(context.Request.RouteValues["employeeName"]);
+        await context.Response.WriteAsync($"Employee name - {employeeName}");
     });
 });
 
