@@ -24,11 +24,17 @@ app.UseEndpoints(endpoints =>
         string? employeeName = Convert.ToString(context.Request.RouteValues["employeeName"]);
         await context.Response.WriteAsync($"Employee name - {employeeName}");
     });
-
-    endpoints.Map("/products/details/{id=1}", async context =>
+    // making the id as an optional parameter
+    endpoints.Map("/products/details/{id?}", async context =>
     {
-        string? id = Convert.ToString(context.Request.RouteValues["id"]);
-        await context.Response.WriteAsync($"Product id - {id}");
+        if(context.Request.RouteValues.ContainsKey("id"))
+        {
+            string? id = Convert.ToString(context.Request.RouteValues["id"]);
+            await context.Response.WriteAsync($"Product id - {id}");
+        } else
+        {
+            await context.Response.WriteAsync("Product details id is not supplied");
+        }
     });
 });
 
