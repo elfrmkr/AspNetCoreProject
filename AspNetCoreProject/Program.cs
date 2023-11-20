@@ -18,11 +18,17 @@ app.UseEndpoints(endpoints =>
         await context.Response.WriteAsync($"In files - {filename} - {extension}");
     });
 
-    // case insensitive
-    endpoints.Map("employee/profile/{employeeName}", async context =>
+    // case insensitive, you can give default parameters when nothing is provided: elif in this case
+    endpoints.Map("employee/profile/{employeeName=elif}", async context =>
     {
         string? employeeName = Convert.ToString(context.Request.RouteValues["employeeName"]);
         await context.Response.WriteAsync($"Employee name - {employeeName}");
+    });
+
+    endpoints.Map("/products/details/{id=1}", async context =>
+    {
+        string? id = Convert.ToString(context.Request.RouteValues["id"]);
+        await context.Response.WriteAsync($"Product id - {id}");
     });
 });
 
