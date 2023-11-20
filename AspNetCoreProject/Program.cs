@@ -8,29 +8,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<MyCustomMiddleware>();
 var app = builder.Build();
 
-
-/*********************************************/
-// conditional middleware
-app.UseWhen(context =>
-
-context.Request.Query.ContainsKey("username"),
-    app =>
+// routing example
+app.UseRouting(); // enable routing
+// creating endpoints
+app.UseEndpoints(endpoints =>
+{
+    // add your end point, Map METHODS
+    endpoints.Map("/map1", async (context) =>
     {
-        app.Use(async (context, next) =>
-        {
-            await context.Response.WriteAsync("Hello from" +
-            " middleware branch");
-            await next();
-
-        });
+        await context.Response.WriteAsync("In map 1");
     });
-
-    app.Run(async context =>
+    endpoints.Map("/map2", async (context) =>
     {
-        await context.Response.WriteAsync("Hello from" +
-        " middleware at main chain");
-
+        await context.Response.WriteAsync("In map 2");
     });
+});
 
 
 app.Run(); // start to server
