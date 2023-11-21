@@ -1,7 +1,14 @@
-using AspNetCoreProject.CustomMiddleware;
+using AspNetCoreProject.CustomConstraints;
 
 //Builder loads the configuration, environment and default services
 var builder = WebApplication.CreateBuilder(args);
+// add constraint
+builder.Services.AddRouting(options =>
+{
+    options.ConstraintMap.Add("months", typeof(MonthsCustomConstraint));
+
+});
+
 var app = builder.Build();
 
 // routing example
@@ -66,7 +73,7 @@ app.UseEndpoints(endpoints =>
     });
 
     //sales-report/2030/apr, :regex(^(apr|jul|oct|jan)$)
-    endpoints.Map("/sales-report/{year:int:min(1900)}/{month}", async context =>
+    endpoints.Map("/sales-report/{year:int:min(1900)}/{month:months}", async context =>
     {
         int year = Convert.ToInt32(context.Request.RouteValues["year"]);
         string? month = Convert.ToString(context.Request.RouteValues["month"]);
