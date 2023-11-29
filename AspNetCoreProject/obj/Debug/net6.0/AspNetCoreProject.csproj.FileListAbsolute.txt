@@ -23,3 +23,5 @@ C:\Users\SYOM\Desktop\elif_çalışma\Asp.Net Core\AspNetCoreProject\AspNetCoreP
 C:\Users\SYOM\Desktop\elif_çalışma\Asp.Net Core\AspNetCoreProject\AspNetCoreProject\obj\Debug\net6.0\AspNetCoreProject.pdb
 C:\Users\SYOM\Desktop\elif_çalışma\Asp.Net Core\AspNetCoreProject\AspNetCoreProject\obj\Debug\net6.0\AspNetCoreProject.genruntimeconfig.cache
 C:\Users\SYOM\Desktop\elif_çalışma\Asp.Net Core\AspNetCoreProject\AspNetCoreProject\obj\Debug\net6.0\ref\AspNetCoreProject.dll
+C:\Users\SYOM\Desktop\elif_çalışma\Asp.Net Core\AspNetCoreProject\AspNetCoreProject\obj\Debug\net6.0\AspNetCoreProject.sourcelink.json
+C:\Users\SYOM\Desktop\elif_çalışma\Asp.Net Core\AspNetCoreProject\AspNetCoreProject\bin\Debug\net6.0\AspNetCoreProject.staticwebassets.runtime.json

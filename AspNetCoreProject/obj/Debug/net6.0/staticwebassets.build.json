@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "tOrNb1R9W1f9b59t4CWqOhlHYFQtZPQLKDuYpLl4lww=",
+  "Hash": "AF7WcqzAhB/atTLT1F+AyzLxJAWKWdTyGdHHi/J0lqE=",
   "Source": "AspNetCoreProject",
   "BasePath": "_content/AspNetCoreProject",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "AspNetCoreProject\\wwwroot",
+      "Source": "AspNetCoreProject",
+      "ContentRoot": "C:\\Users\\SYOM\\Desktop\\elif_çalışma\\Asp.Net Core\\AspNetCoreProject\\AspNetCoreProject\\wwwroot\\",
+      "BasePath": "_content/AspNetCoreProject",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

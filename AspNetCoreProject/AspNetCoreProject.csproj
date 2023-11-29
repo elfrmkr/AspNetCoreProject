@@ -6,4 +6,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="myroot\Düğün Repertuvar.pdf" />
+    <Content Include="myroot\fat cute cat.jpg" />
+    <Content Include="myroot\some.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="myWebRoot\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>
