@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Content Include="myroot\Düğün Repertuvar.pdf" />
-    <Content Include="myroot\fat cute cat.jpg" />
     <Content Include="myroot\some.txt" />
   </ItemGroup>
 

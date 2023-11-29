@@ -1,6 +1,4 @@
-
-//Builder loads the configuration, environment and default services
-using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
 {
@@ -8,14 +6,22 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
 });
 var app = builder.Build();
 
-app.UseStaticFiles();
+app.UseStaticFiles(); //works with the web root path (myroot)
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(
+ Path.Combine(builder.Environment.ContentRootPath, "mywebroot")
+ )
+}); //works with "mywebroot"
 
+//c:\aspnetcore\StaticFilesExample\StaticFilesExample
 app.UseRouting();
 
-app.UseEndpoints(endpoints => { 
+app.UseEndpoints(endpoints => {
     endpoints.Map("/", async context =>
     {
-        await context.Response.WriteAsync("Hello world!");
+        await context.Response.WriteAsync("Hello");
     });
 });
-app.Run(); // start to server
+
+app.Run();
